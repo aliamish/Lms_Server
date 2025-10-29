@@ -8,7 +8,7 @@ const auth_1 = require("../middleware/auth");
 const notification_1 = require("../controllers/notification");
 const user_1 = require("../controllers/user");
 const notificationRouter = express_1.default.Router();
-notificationRouter.get('/get-all-notifications', user_1.updateAccessToken, auth_1.isAuthenticated, (0, auth_1.authorizeRoles)('admin'), notification_1.getNotification);
+notificationRouter.get('/get-all-notification', user_1.updateAccessToken, auth_1.isAuthenticated, (0, auth_1.authorizeRoles)('admin'), notification_1.getNotification);
 notificationRouter.put('/update-notification/:id', user_1.updateAccessToken, auth_1.isAuthenticated, (0, auth_1.authorizeRoles)('admin'), notification_1.updateNotification);
 exports.default = notificationRouter;
 //# sourceMappingURL=notificationRout.js.map

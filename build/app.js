@@ -16,41 +16,44 @@ const notificationRout_1 = __importDefault(require("./routes/notificationRout"))
 const analyticsRout_1 = __importDefault(require("./routes/analyticsRout"));
 const layoutRout_1 = __importDefault(require("./routes/layoutRout"));
 exports.app = (0, express_1.default)();
-const { rateLimit } = require('express-rate-limit');
+const { rateLimit } = require("express-rate-limit");
 // BODY PARSER
 exports.app.use(express_1.default.json({ limit: "50mb" }));
 // COOKIE PARSER
 exports.app.use((0, cookie_parser_1.default)());
 // CORS  =>  CORS ORIGIN RECOURSES SHARING
 exports.app.use((0, cors_1.default)({
-    origin: ['https://lms-client-theta-black.vercel.app'],
-    credentials: true
+    origin: [
+        "https://e-learning-client-lilac-zeta.vercel.app",
+        "http://localhost:3000",
+    ],
+    credentials: true,
 }));
-// SET API LIMIT 
+// SET API LIMIT
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000,
     max: 100,
-    standardHeader: 'draft-7',
-    legacyHeaders: false
+    standardHeader: "draft-7",
+    legacyHeaders: false,
 });
 // ROUTES
-exports.app.use('/api/v1', userRout_1.default);
-exports.app.use('/api/v1', courseRout_1.default);
-exports.app.use('/api/v1', orderRout_1.default);
-exports.app.use('/api/v1', notificationRout_1.default);
-exports.app.use('/api/v1', analyticsRout_1.default);
-exports.app.use('/api/v1', layoutRout_1.default);
+exports.app.use("/api/v1", userRout_1.default);
+exports.app.use("/api/v1", courseRout_1.default);
+exports.app.use("/api/v1", orderRout_1.default);
+exports.app.use("/api/v1", notificationRout_1.default);
+exports.app.use("/api/v1", analyticsRout_1.default);
+exports.app.use("/api/v1", layoutRout_1.default);
 // TESTING API
-exports.app.get('/test', (req, res, next) => {
+exports.app.get("/test", (req, res, next) => {
     res.status(200).json({
         success: true,
-        message: "Api is working successfully"
+        message: "Api is working successfully",
     });
 });
-exports.app.get('/', (req, res) => {
+exports.app.get("/", (req, res) => {
     res.status(200).json({
         success: true,
-        message: 'Welcome to the LMS API. Use /api/v1 for API endpoints or /test for a test route.'
+        message: "Welcome to the LMS API. Use /api/v1 for API endpoints or /test for a test route.",
     });
 });
 exports.app.use(limiter);
