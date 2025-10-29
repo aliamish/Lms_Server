@@ -1,0 +1,14 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const auth_1 = require("../middleware/auth");
+const notification_1 = require("../controllers/notification");
+const user_1 = require("../controllers/user");
+const notificationRouter = express_1.default.Router();
+notificationRouter.get('/get-all-notifications', user_1.updateAccessToken, auth_1.isAuthenticated, (0, auth_1.authorizeRoles)('admin'), notification_1.getNotification);
+notificationRouter.put('/update-notification/:id', user_1.updateAccessToken, auth_1.isAuthenticated, (0, auth_1.authorizeRoles)('admin'), notification_1.updateNotification);
+exports.default = notificationRouter;
+//# sourceMappingURL=notificationRout.js.map
