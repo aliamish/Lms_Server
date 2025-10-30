@@ -10,7 +10,7 @@ const user_1 = require("../controllers/user");
 const orderRouter = express_1.default.Router();
 orderRouter.post('/create-order', user_1.updateAccessToken, auth_1.isAuthenticated, order_1.createOrder);
 orderRouter.get('/get-orders', user_1.updateAccessToken, auth_1.isAuthenticated, (0, auth_1.authorizeRoles)('admin'), order_1.getAllOrders);
-orderRouter.get('/payment/stripe-publishable-key', order_1.sendStripePublishKey);
+orderRouter.get('/payment/stripepublishablekey', order_1.sendStripePublishKey);
 orderRouter.post('/payment', auth_1.isAuthenticated, order_1.newPayment);
 exports.default = orderRouter;
 //# sourceMappingURL=orderRout.js.map

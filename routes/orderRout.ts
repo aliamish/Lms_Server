@@ -9,7 +9,7 @@ const orderRouter = express.Router();
 
 orderRouter.post('/create-order', updateAccessToken, isAuthenticated, createOrder)
 orderRouter.get('/get-orders', updateAccessToken, isAuthenticated, authorizeRoles('admin'), getAllOrders)
-orderRouter.get('/payment/stripe-publishable-key', sendStripePublishKey)
+orderRouter.get('/payment/stripepublishablekey', sendStripePublishKey)
 orderRouter.post('/payment', isAuthenticated, newPayment)
 
 
